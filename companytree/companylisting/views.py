@@ -79,4 +79,4 @@ def company_edit(request,id=None):
         "instance":instance,
         "form":form
     }
-    return render(request, "company_form.html",context, )
+    return render(request, "company_edit_form.html",context )

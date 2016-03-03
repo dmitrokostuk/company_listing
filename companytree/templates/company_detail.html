@@ -1,18 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
 
-                 <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Action
-                <span class="caret"></span>
-                </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-                      <li><a href="url 'company:company.id/delete'  %}" class="btn btn-primary">Delete Company</a></li>
-                      <li><a href="{% url 'company:edit'/company.id %}" class="btn btn-primary">Edit Company</a></li>
-                        <li role="separator" class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
-                      </ul>
-                      </div>
+
+
+<div class="buttons">
+  <li>
+      <a href="delete" class="btn btn-primary">Delete Company</a>
+      <a href="edit" class="btn btn-primary">Edit Company</a>
+      <a href="/company" class="btn btn-primary">Go to company_list</a>
+  </li>
+</div>
+
+{% load mptt_tags %}
+
+
+           {{ node.content }}
+            {{ node.name }}
+            {{ node.company_estimated_earnings }}
+
+
+
+
+
+
+
 {% endblock content %}

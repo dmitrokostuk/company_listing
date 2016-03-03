@@ -18,6 +18,8 @@ class Company(MPTTModel):
     class MPTTMeta:
         order_insertion_by = ['company_name']
         order_insertion_by = ['company_estimated_earnings']
+
+
     def __unicode__(self):
         return u"%s "%(self.company_name)
 
