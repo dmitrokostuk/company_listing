@@ -29,8 +29,10 @@ def company_list(request):
  #              }
     #return render(request, "company_list.html",context )
     #return render_to_response("company_list.html")
-
-    return render_to_response("company_list.html",context)
+    return render_to_response("company_list.html",
+                          {'nodes':Company.objects.all()},
+                          context_instance=RequestContext(request))
+    #return render_to_response("company_list.html",context)
 
 
 

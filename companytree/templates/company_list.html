@@ -21,50 +21,48 @@
 
           <th> Company tree</th>
           <th> Company Estimated Earnings</th>
-          <th> Action</th>
+          <th> Company Estimated Earnings + Child <br> Company Estimated Earnings
+          </th>
+
+
         </tr>
         </thead>
 
-
-
-
-
-
-
         <tbody>
-
-         <tr>
-
-           <td>
+        <tr>
+            <td>
                {% load mptt_tags %}
+
+
                {% recursetree nodes %}
                <li>
-               <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+               <a href="{{ node.get_absolute_url }}">{{ node.company_name }}</a>
                {% if not node.is_leaf_node %}
                 <ul class="children">
                     {{ children }}
                  </ul>
-                {% endif %}
-                 </li>
-               {% endrecursetree %}
-                </td>
-           <td><p>{{obj.company_estimated_earnings|linebreaks|truncatechars:120 }}</p> </td>
-           <td>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Action
-                <span class="caret"></span>
-                </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-                      <li><a href="url 'company: company.id/delete'  %}" class="btn btn-primary">Delete Company</a></li>
-                      <li><a href="url 'company:company.id /edit'  %}" class="btn btn-primary">Edit Company</a></li>
-                        <li role="separator" class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
-                      </ul>
-                      </div>
-          </td>
+                </li>
+                 {% endif %}
+                   {% endrecursetree %}
+            <td>
+
+               {% recursetree nodes %}
+               <li>
+                {{ node.company_estimated_earnings}}
+               {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                 </ul>
+
+
+                 {% endif %}
+                   {% endrecursetree %}
+
+
+
+        </td>
+
         </tr>
         </tbody>
 

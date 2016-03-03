@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.core.urlresolvers import reverse
 
-\
+
 
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
@@ -10,13 +10,14 @@ from mptt.models import MPTTModel, TreeForeignKey
 class Company(MPTTModel):
     company_name = models.CharField(max_length=50, unique=True)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
-    company_estimated_earnings=models.CharField(max_length=1024)
+    company_estimated_earnings=models.CharField(max_length=1024, null = True)
     content = models.TextField()
 
 
 
     class MPTTMeta:
         order_insertion_by = ['company_name']
+        order_insertion_by = ['company_estimated_earnings']
     def __unicode__(self):
         return u"%s "%(self.company_name)
 
